@@ -307,6 +307,7 @@ try
 
             $speed = 8
             $diag = 0.7071
+            $scrollDelay = 100
 
             if ([KeyboardMouse]::IsDown(0x25)) { $dx -= $speed }
             if ([KeyboardMouse]::IsDown(0x27)) { $dx += $speed }
@@ -343,15 +344,16 @@ try
             }
 
             if ([KeyboardMouse]::IsDown(0x45))
-            {
-                [KeyboardMouse]::Scroll(120)
-            }
+{
+    [KeyboardMouse]::Scroll(120)
+    Start-Sleep -Milliseconds $scrollDelay
+}
 
-            if ([KeyboardMouse]::IsDown(0x44))
-            {
-                [KeyboardMouse]::Scroll(-120)
-            }
-        }
+if ([KeyboardMouse]::IsDown(0x44))
+{
+    [KeyboardMouse]::Scroll(-120)
+    Start-Sleep -Milliseconds $scrollDelay
+}  }
         else
         {
             [KeyboardMouse]::ClearKeys()
