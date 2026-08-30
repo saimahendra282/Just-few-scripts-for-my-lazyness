@@ -19,7 +19,7 @@ once mouse mode is on:
 * d - scroll down
 * left shift - left click
 * right shift - right click
-* hold space , right shift , then arrow keys for dragging
+* hold space bar, then arrow keys for dragging
 
 run the stop.bat file to stop it completely
 
