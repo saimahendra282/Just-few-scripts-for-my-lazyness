@@ -1,8 +1,6 @@
 @echo off
 setlocal
 
-title A Lazy Mouse - Start
-
 :MENU
 
 cls
@@ -22,32 +20,15 @@ echo.
 
 set /p "choice=Enter choice (1-4): "
 
-if "%choice%"=="1" (
-    set "TOGGLE=CapsLock"
-    goto START
-)
-
-if "%choice%"=="2" (
-    set "TOGGLE=PrintScreen"
-    goto START
-)
-
-if "%choice%"=="3" (
-    set "TOGGLE=ScrollLock"
-    goto START
-)
-
-if "%choice%"=="4" (
-    set "TOGGLE=PauseBreak"
-    goto START
-)
+if "%choice%"=="1" set "TOGGLE=CapsLock" & goto START
+if "%choice%"=="2" set "TOGGLE=PrintScreen" & goto START
+if "%choice%"=="3" set "TOGGLE=ScrollLock" & goto START
+if "%choice%"=="4" set "TOGGLE=PauseBreak" & goto START
 
 echo.
-echo Invalid choice. Please choose 1, 2, 3 or 4.
+echo Invalid choice.
 timeout /t 2 >nul
-
 goto MENU
-
 
 :START
 
@@ -56,11 +37,6 @@ echo Selected toggle: %TOGGLE%
 echo Starting A Lazy Mouse...
 echo.
 
-start "" powershell.exe ^
-    -NoProfile ^
-    -ExecutionPolicy Bypass ^
-    -WindowStyle Hidden ^
-    -File "%~dp0Mousectrl.ps1" ^
-    -ToggleKey "%TOGGLE%"
+wscript.exe "%~dp0RunMouse.vbs" "%TOGGLE%"
 
 exit /b
